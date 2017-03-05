@@ -6,28 +6,23 @@ angular.module('LunchCheck', [])
 
 LunchCheckController.$inject = ['$scope'];
 function LunchCheckController ($scope) {
+$scope.result="";
 $scope.name="";
 $scope.verify = function () {
-var comma = ',';
-var x = "hi";
-var message = splitString($scope.name);
-$scope.result=message;
-console.log($scope.x);
+$scope.name=$scope.name.trim();
+var $nameArray = $scope.name.split(",");
+var $length = $nameArray.length;
+if ($scope.name === "") {
+  $scope.result = "Please enter data first.";
+}
+else {
+  if ($length <= 3) {
+    $scope.result = "Enjoy!";
+  }
+  else {
+    $scope.result = "Too much!";
+  }
+}
 };
 }
-function splitString($scope.name) {
-
-var stringvalue = $scope.name;
-var stringsentered = stringvalue.split(,);
-var length = stringsentered.length;
-
-switch(length) {
-case '0':return "Please enter data first";
-case '1': return "Enjoy!";
-case '2': return "Enjoy!";
-case '3': return "Enjoy!";
-default: return "Too much!";
-}
-}
-console.log("hi");
-})(); 
+})();
